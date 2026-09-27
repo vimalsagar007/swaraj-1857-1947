@@ -1,0 +1,58 @@
+{
+  "name": "Swaraj 1857-1947 Historical Research Agent",
+  "description": "Agentic AI historical platform dedicated to researching and honoring India's freedom struggle from 1857 to 1947 with grounded RAG, public source verification, citations, and multi-agent collaboration.",
+  "version": "1.0.0",
+  "creator": "Vimal Sagar Yarraguntla",
+  "capabilities": [
+    "rag_historical_retrieval",
+    "public_api_research",
+    "fact_verification",
+    "citation_generation",
+    "timeline_mapping",
+    "image_provenance_attribution",
+    "ai_historical_visualization"
+  ],
+  "skills": [
+    {
+      "id": "biography_synthesis",
+      "name": "Freedom Fighter Biography Synthesis",
+      "description": "Generates verified biographical profiles for freedom fighters with primary and secondary source grounding."
+    },
+    {
+      "id": "timeline_analysis",
+      "name": "Chronological Movement Analysis",
+      "description": "Maps events across the 1857-1947 freedom struggle with regional and organizational context."
+    },
+    {
+      "id": "fact_checker",
+      "name": "Historical Claim Verification",
+      "description": "Cross-verifies historical claims across National Archives, Wikidata, Wikimedia, and public domain repositories."
+    }
+  ],
+  "supportedInput": {
+    "mediaType": "application/json",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "query": { "type": "string" },
+        "session_id": { "type": "string" },
+        "filters": { "type": "object" }
+      },
+      "required": ["query"]
+    }
+  },
+  "supportedOutput": {
+    "mediaType": "application/json",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "answer": { "type": "string" },
+        "citations": { "type": "array" },
+        "fact_check_status": { "type": "string" },
+        "images": { "type": "array" },
+        "agent_activity": { "type": "array" }
+      }
+    }
+  },
+  "endpoint": "/api/chat"
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "meerut",
+    "name": "Meerut",
+    "state": "Uttar Pradesh",
+    "coordinates": { "lat": 28.9845, "lng": 77.7064 },
+    "description": "Origin of the 1857 War of Independence where sepoys broke ranks on May 10, 1857.",
+    "key_events": ["revolt-1857"],
+    "key_figures": ["Mangal Pandey"]
+  },
+  {
+    "id": "delhi",
+    "name": "Delhi",
+    "state": "National Capital Territory",
+    "coordinates": { "lat": 28.6139, "lng": 77.2090 },
+    "description": "Historical seat of power; epicenter of the 1857 siege, 1929 Assembly bomb action, and 1947 Independence declaration at Red Fort.",
+    "key_events": ["revolt-1857", "dawn-independence-1947"],
+    "key_figures": ["Bahadur Shah Zafar", "Bhagat Singh", "Aruna Asaf Ali", "Jawaharlal Nehru"]
+  },
+  {
+    "id": "jhansi",
+    "name": "Jhansi",
+    "state": "Uttar Pradesh",
+    "coordinates": { "lat": 25.4484, "lng": 78.5685 },
+    "description": "The heroic fortress city defended by Rani Lakshmibai during the 1857 Rebellion.",
+    "key_events": ["revolt-1857"],
+    "key_figures": ["Rani Lakshmibai", "Tatya Tope"]
+  },
+  {
+    "id": "champaran",
+    "name": "Champaran",
+    "state": "Bihar",
+    "coordinates": { "lat": 26.7972, "lng": 84.5323 },
+    "description": "Site of Mahatma Gandhi's first Satyagraha in India (1917) against oppressive British indigo planters.",
+    "key_events": ["champaran-1917"],
+    "key_figures": ["Mahatma Gandhi", "Rajendra Prasad"]
+  },
+  {
+    "id": "amritsar",
+    "name": "Amritsar",
+    "state": "Punjab",
+    "coordinates": { "lat": 31.6340, "lng": 74.8723 },
+    "description": "Location of the tragic Jallianwala Bagh massacre of 1919.",
+    "key_events": ["jallianwala-bagh-1919"],
+    "key_figures": ["Udham Singh", "Dr. Saifuddin Kitchlew", "Rabindranath Tagore"]
+  },
+  {
+    "id": "kakori",
+    "name": "Kakori",
+    "state": "Uttar Pradesh",
+    "coordinates": { "lat": 26.8778, "lng": 80.7936 },
+    "description": "Site of the legendary 1925 HRA train action led by Ram Prasad Bismil and Ashfaqulla Khan.",
+    "key_events": ["kakori-1925"],
+    "key_figures": ["Ram Prasad Bismil", "Ashfaqulla Khan", "Chandrashekhar Azad"]
+  },
+  {
+    "id": "dandi",
+    "name": "Dandi",
+    "state": "Gujarat",
+    "coordinates": { "lat": 20.8880, "lng": 72.8000 },
+    "description": "Coastal village destination of Mahatma Gandhi's 240-mile Salt March in 1930.",
+    "key_events": ["dandi-march-1930"],
+    "key_figures": ["Mahatma Gandhi", "Sarojini Naidu"]
+  },
+  {
+    "id": "mumbai",
+    "name": "Mumbai (Bombay)",
+    "state": "Maharashtra",
+    "coordinates": { "lat": 18.9667, "lng": 72.8333 },
+    "description": "Birthplace of the Indian National Congress (1885), Quit India Movement flag hoisting (1942), and Royal Indian Navy Mutiny (1946).",
+    "key_events": ["inc-formation-1885", "quit-india-1942"],
+    "key_figures": ["Dadabhai Naoroji", "Aruna Asaf Ali", "Usha Mehta"]
+  },
+  {
+    "id": "kolkata",
+    "name": "Kolkata (Calcutta)",
+    "state": "West Bengal",
+    "coordinates": { "lat": 22.5726, "lng": 88.3639 },
+    "description": "Crucible of Bengal Renaissance, Swadeshi anti-partition movement (1905), and Netaji's escape in 1941.",
+    "key_events": ["partition-bengal-1905"],
+    "key_figures": ["Subhas Chandra Bose", "Aurobindo Ghose", "Bipin Chandra Pal", "Rabindranath Tagore"]
+  },
+  {
+    "id": "andhra-agency",
+    "name": "Rampa Agency (Godavari)",
+    "state": "Andhra Pradesh",
+    "coordinates": { "lat": 17.5000, "lng": 81.8000 },
+    "description": "Hilly jungle agency tracts where Alluri Sitarama Raju waged the 1922-1924 Rampa Adivasi Rebellion.",
+    "key_events": ["rampa-rebellion-1922"],
+    "key_figures": ["Alluri Sitarama Raju"]
+  }
+]
