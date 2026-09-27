@@ -147,28 +147,97 @@ During response generation, the user interface streams step-by-step agent execut
 
 ---
 
-## 4. Comprehensive Test Suite
+## 4. How to Test & Verification Guide
 
-The test suite (`tests/test_swaraj_system.py`) verifies the 10 core historical queries across RAG retrieval, public API integration, multi-agent orchestration, image attribution, and fact verification.
+### 4.1 Live Testing via Cloud Run Endpoint
+
+You can interact with the live deployed backend REST API directly using `curl` or any HTTP client:
+
+**1. Health Check Verification**:
+```bash
+curl -s https://swaraj-historical-agent-61256100941.us-central1.run.app/api/health
+```
+*Expected Output*: `{"status":"healthy","service":"Swaraj 1857-1947 Historical Platform","version":"1.0.0"}`
+
+**2. Chat Query Test (Bhagat Singh)**:
+```bash
+curl -s -X POST https://swaraj-historical-agent-61256100941.us-central1.run.app/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"query": "Tell me about Shaheed Bhagat Singh and his role in the freedom struggle"}'
+```
+
+**3. Timeline Query Test (1857 to 1947 Chronology)**:
+```bash
+curl -s -X POST https://swaraj-historical-agent-61256100941.us-central1.run.app/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"query": "Provide a complete chronological summary of major events from 1857 to 1947"}'
+```
+
+---
+
+### 4.2 Testing Live in Google Enterprise Agent Runtime Playground
+
+1. **Open GCP Console**:
+   Navigate to [Vertex AI Agent Engines Console](https://console.cloud.google.com/vertex-ai/agents/agent-engines/locations/us-central1/agent-engines/2726291307872911360?project=qwiklabs-gcp-02-63b2f55175ee).
+2. **Select Reasoning Engine Resource**:
+   - Resource ID: `projects/61256100941/locations/us-central1/reasoningEngines/2726291307872911360`
+3. **Interactive Playground Execution**:
+   - Enter prompts such as: *"Who were the prominent women leaders in the Indian freedom struggle?"* or *"Explain the significance of the 1930 Salt March."*
+   - Inspect step-by-step agent tool invocations, RAG vector store queries, and citation provenance in real time.
+
+---
+
+### 4.3 Running Automated Integration Test Suite
+
+Execute the automated test suite (`tests/test_swaraj_system.py`) to verify RAG retrieval, specialist agent orchestration, Wikipedia image resolution, and fact-checking logic across 10 core historical scenarios:
 
 ```bash
 python3 tests/test_swaraj_system.py
 ```
 
-### Verified Test Cases
+#### Test Suite Coverage Matrix
 
-| # | Query | Primary Agent | Verification Check |
-|---|-------|---------------|--------------------|
-| 1 | *"Tell me about Bhagat Singh."* | `BiographyAgent` + RAG | Confirms biography context, citations `[1]`, and `SUPPORTED` evidence status. |
-| 2 | *"What was the contribution of Rani Lakshmibai?"* | `BiographyAgent` + `TimelineAgent` | Verifies 1857 Revolt role, Jhansi resistance details, and primary citations. |
-| 3 | *"Who were the women freedom fighters?"* | `OrchestratorAgent` | Verifies filtering across Sarojini Naidu, Aruna Asaf Ali, Rani Lakshmibai, and Kasturba. |
-| 4 | *"Show freedom fighters connected with Andhra Pradesh."* | `ResearchAgent` + RAG | Validates regional filtering for Alluri Sitarama Raju and the Rampa Rebellion. |
+| # | Query | Primary Agent | Verification Criteria |
+|---|-------|---------------|----------------------|
+| 1 | *"Tell me about Bhagat Singh."* | `BiographyAgent` + RAG | Validates biography context, grounded citations `[1]`, and `SUPPORTED` evidence status. |
+| 2 | *"What was the contribution of Rani Lakshmibai?"* | `BiographyAgent` + `TimelineAgent` | Verifies 1857 Revolt details, Jhansi resistance history, and primary source URLs. |
+| 3 | *"Who were the women freedom fighters?"* | `OrchestratorAgent` | Verifies multi-person filtering (Sarojini Naidu, Aruna Asaf Ali, Rani Lakshmibai). |
+| 4 | *"Show freedom fighters connected with Andhra Pradesh."* | `ResearchAgent` + RAG | Validates regional filtering for Alluri Sitarama Raju and Rampa Rebellion. |
 | 5 | *"What happened during the Quit India Movement?"* | `TimelineAgent` | Confirms 1942 milestone details, Bombay session, and major leaders. |
-| 6 | *"Find historical images of Subhas Chandra Bose."* | `ImageResearchAgent` | Verifies archival image retrieval and `AI-generated historical visualization` badge tags. |
-| 7 | *"Give me the timeline from 1857 to 1947."* | `TimelineAgent` | Validates complete chronological event mapping from 1857 Revolt to 1947 Independence. |
+| 6 | *"Find historical images of Subhas Chandra Bose."* | `ImageResearchAgent` | Verifies archival Wikipedia image retrieval and `AI-generated historical visualization` badge tags. |
+| 7 | *"Give me the timeline from 1857 to 1947."* | `TimelineAgent` | Validates complete chronological event sequence from 1857 Revolt to 1947 Independence. |
 | 8 | *"Compare Non-Cooperation and Civil Disobedience."* | `OrchestratorAgent` | Verifies comparative analysis between 1920 (Non-Cooperation) and 1930 (Salt Satyagraha). |
 | 9 | *"Who participated in the Kakori action?"* | `BiographyAgent` + RAG | Confirms HRA revolutionaries (Ram Prasad Bismil, Ashfaqulla Khan, Chandrashekhar Azad). |
 | 10 | *"Show me reliable sources about Alluri Sitarama Raju."* | `CitationAgent` + MCP | Verifies source provenance metadata, publisher attribution, and direct URLs. |
+
+---
+
+### 4.4 Testing the Web Application Locally
+
+1. **Navigate to `frontend/` directory**:
+   ```bash
+   cd frontend
+   ```
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Start Local Development Server**:
+   ```bash
+   npm run dev
+   ```
+4. **Open Web Browser**:
+   Navigate to `http://localhost:5173` to test the interactive user interface, A.R. Rahman Vande Mataram audio player, Freedom Fighter directory, interactive timeline, and Ask Swaraj AI assistant.
+
+---
+
+### 4.5 Pre-Commit Security Scanner Test
+
+Run the automated secret scanner before committing changes to ensure zero API keys or sensitive tokens are stored in source code:
+
+```bash
+python3 scripts/secret_scan.py
+```
 
 ---
 
