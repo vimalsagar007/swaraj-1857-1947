@@ -101,6 +101,12 @@ def verify_claim(req: VerifyRequest):
     res = orchestrator.mcp.call_tool("verify_source", {"claim": req.claim})
     return {"status": "success", "verification": res.get("verification", {})}
 
+# Serve static frontend build if present
+dist_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "dist")
+if os.path.exists(dist_dir):
+    app.mount("/", StaticFiles(directory=dist_dir, html=True), name="static")
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+

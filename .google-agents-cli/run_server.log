@@ -1,0 +1,25 @@
+=== Starting server at 2026-09-27T10:52:09.835570+00:00 ===
+Command: uv run adk api_server --host 127.0.0.1 --port 18080 --reload_agents --no-reload .
+CWD: /config/Desktop/Session1/swaraj-1857-1947
+=== Started server process 247853 ===
+warning: `VIRTUAL_ENV=/lsiopy` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+Using CPython 3.13.14
+Creating virtual environment at: .venv
+Installed 17 packages in 21ms
+2026-09-27 10:52:13,653 - INFO - service_factory.py:266 - Using in-memory memory service
+2026-09-27 10:52:13,654 - INFO - local_storage.py:88 - Using per-agent session storage rooted at /config/Desktop/Session1/swaraj-1857-1947
+2026-09-27 10:52:13,655 - INFO - local_storage.py:120 - Using per-agent artifact storage rooted at /config/Desktop/Session1/swaraj-1857-1947
+/opt/venv/lib/python3.14/site-packages/google/adk/cli/fast_api.py:553: UserWarning: [EXPERIMENTAL] InMemoryCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credential_service = InMemoryCredentialService()
+/opt/venv/lib/python3.14/site-packages/google/adk/auth/credential_service/in_memory_credential_service.py:33: UserWarning: [EXPERIMENTAL] BaseCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  super().__init__()
+INFO:     Started server process [247887]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:18080 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40726 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40728 - "POST /apps/users/cli-user/sessions HTTP/1.1" 404 Not Found
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [247887]
