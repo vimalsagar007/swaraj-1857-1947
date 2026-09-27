@@ -56,9 +56,10 @@ class ImageResearchAgent:
         
         formatted_images = []
         for img in images:
-            if img.get("image_url"):
+            img_url = img.get("image_url", "")
+            if img_url and any(img_url.lower().split('?')[0].endswith(ext) for ext in ['.jpg', '.jpeg', '.png', '.webp', '.svg', '.gif']):
                 formatted_images.append({
-                    "url": img["image_url"],
+                    "url": img_url,
                     "title": img.get("title", query),
                     "source": img.get("source", "Wikimedia Commons"),
                     "license": img.get("license", "Public Domain"),

@@ -43,19 +43,24 @@ class WikimediaProvider(PublicAPIProvider):
                 data = json.loads(response.read().decode('utf-8'))
                 pages = data.get('query', {}).get('pages', {})
                 results = []
-                for page_id, page in list(pages.items())[:3]:
+                for page_id, page in pages.items():
                     imageinfo = page.get('imageinfo', [{}])[0]
                     img_url = imageinfo.get('url', '')
                     extmeta = imageinfo.get('extmetadata', {})
-                    results.append({
-                        "title": page.get('title', query).replace('File:', ''),
-                        "description": extmeta.get('ObjectName', {}).get('value', page.get('title')),
-                        "url": imageinfo.get('descriptionurl', img_url),
-                        "source": "Wikimedia Commons",
-                        "published_date": extmeta.get('DateTimeOriginal', {}).get('value', 'Historic'),
-                        "image_url": img_url,
-                        "license": extmeta.get('LicenseShortName', {}).get('value', 'Public Domain / CC-BY-SA')
-                    })
+                    
+                    # Ensure URL is a valid web image file, not a PDF or DJVU document
+                    if img_url and any(img_url.lower().split('?')[0].endswith(ext) for ext in ['.jpg', '.jpeg', '.png', '.webp', '.svg', '.gif']):
+                        results.append({
+                            "title": page.get('title', query).replace('File:', ''),
+                            "description": extmeta.get('ObjectName', {}).get('value', page.get('title')),
+                            "url": imageinfo.get('descriptionurl', img_url),
+                            "source": "Wikimedia Commons",
+                            "published_date": extmeta.get('DateTimeOriginal', {}).get('value', 'Historic'),
+                            "image_url": img_url,
+                            "license": extmeta.get('LicenseShortName', {}).get('value', 'Public Domain / CC-BY-SA')
+                        })
+                        if len(results) >= 3:
+                            break
                 return results
         except Exception as e:
             logger.warning(f"Wikimedia API call failed: {e}")
