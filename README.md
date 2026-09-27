@@ -35,50 +35,50 @@ Created by **Vimal Sagar Yarraguntla**
 
 ```mermaid
 flowchart TD
-    U[User / Explorer] --> UI[Cinematic React Frontend]
-    
-    subgraph Frontend Experience Layer
-        UI --> HERO[Cinematic Opening Sequence]
-        UI --> ASK[Ask Swaraj AI Assistant]
-        UI --> DIR[Freedom Fighter Directory]
-        UI --> TIME[1857-1947 Interactive Timeline]
-        UI --> MAP[Geographical Hotspot Map]
-        UI --> AUDIO[Web Audio Ambient Soundscape]
+    U["User / Explorer"] --> UI["Cinematic React Frontend"]
+
+    subgraph "Frontend Experience Layer"
+        UI --> HERO["Cinematic Opening Sequence"]
+        UI --> ASK["Ask Swaraj AI Assistant"]
+        UI --> DIR["Freedom Fighter Directory"]
+        UI --> TIME["1857-1947 Interactive Timeline"]
+        UI --> MAP["Geographical Hotspot Map"]
+        UI --> AUDIO["Web Audio Ambient Soundscape"]
     end
 
-    ASK --> ORCH[Orchestrator Agent]
-    
-    subgraph Multi-Agent Network (A2A Specification)
-        ORCH --> RAG_A[RAG Retrieval Specialist]
-        ORCH --> BIO_A[Biography Specialist]
-        ORCH --> TIME_A[Timeline Specialist]
-        ORCH --> RES_A[Public API Research Specialist]
-        ORCH --> IMG_A[Archival & Visual Research Agent]
-        ORCH --> FACT_A[Fact Verification Specialist]
-        ORCH --> CITE_A[Citation & Provenance Agent]
+    ASK --> ORCH["Orchestrator Agent"]
+
+    subgraph "Multi-Agent Network (A2A Specification)"
+        ORCH --> RAG_A["RAG Retrieval Specialist"]
+        ORCH --> BIO_A["Biography Specialist"]
+        ORCH --> TIME_A["Timeline Specialist"]
+        ORCH --> RES_A["Public API Research Specialist"]
+        ORCH --> IMG_A["Archival & Visual Research Agent"]
+        ORCH --> FACT_A["Fact Verification Specialist"]
+        ORCH --> CITE_A["Citation & Provenance Agent"]
     end
 
-    subgraph Tooling Layer (Model Context Protocol - MCP)
-        RES_A --> MCP_SVR[Swaraj MCP Server]
+    subgraph "Tooling Layer (Model Context Protocol - MCP)"
+        RES_A --> MCP_SVR["Swaraj MCP Server"]
         RAG_A --> MCP_SVR
-        
-        MCP_SVR --> VSTORE[(Hybrid VectorStore / RAG Index)]
-        MCP_SVR --> WIKI_DATA[Wikidata SPARQL / REST API]
-        MCP_SVR --> WIKI_COMM[Wikimedia Commons API]
-        MCP_SVR --> ARCHIVE[Internet Archive API]
-        MCP_SVR --> OPENLIB[Open Library API]
+
+        MCP_SVR --> VSTORE[("Hybrid VectorStore / RAG Index")]
+        MCP_SVR --> WIKI_DATA["Wikidata SPARQL / REST API"]
+        MCP_SVR --> WIKI_COMM["Wikimedia Commons API"]
+        MCP_SVR --> ARCHIVE["Internet Archive API"]
+        MCP_SVR --> OPENLIB["Open Library API"]
     end
 
-    subgraph Verification & Output Layer
-        FACT_A --> STATUS{Evidence Status}
-        STATUS -->|Supported| S_OK[SUPPORTED]
-        STATUS -->|Partially Supported| S_PART[PARTIALLY_SUPPORTED]
-        
-        CITE_A --> DRAWER[Verified Citations Drawer]
-        IMG_A --> BADGE[Archival vs AI Image Badges]
+    subgraph "Verification & Output Layer"
+        FACT_A --> STATUS{"Evidence Status"}
+        STATUS -->|Supported| S_OK["SUPPORTED"]
+        STATUS -->|Partially Supported| S_PART["PARTIALLY_SUPPORTED"]
+
+        CITE_A --> DRAWER["Verified Citations Drawer"]
+        IMG_A --> BADGE["Archival vs AI Image Badges"]
     end
 
-    ORCH --> API_OUT[FastAPI REST Response]
+    ORCH --> API_OUT["FastAPI REST Response"]
     API_OUT --> UI
 ```
 
@@ -169,13 +169,6 @@ python3 tests/test_swaraj_system.py
 | 8 | *"Compare Non-Cooperation and Civil Disobedience."* | `OrchestratorAgent` | Verifies comparative analysis between 1920 (Non-Cooperation) and 1930 (Salt Satyagraha). |
 | 9 | *"Who participated in the Kakori action?"* | `BiographyAgent` + RAG | Confirms HRA revolutionaries (Ram Prasad Bismil, Ashfaqulla Khan, Chandrashekhar Azad). |
 | 10 | *"Show me reliable sources about Alluri Sitarama Raju."* | `CitationAgent` + MCP | Verifies source provenance metadata, publisher attribution, and direct URLs. |
-
-### Test Suite Output
-```text
-Ran 10 tests in 126.125s
-
-OK
-```
 
 ---
 
