@@ -194,6 +194,9 @@ export const AskSwarajAI: React.FC = () => {
                     <img
                       src={img.url}
                       alt={img.title}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80';
+                      }}
                       className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="p-3 bg-charcoal-900/90 text-xs space-y-1">

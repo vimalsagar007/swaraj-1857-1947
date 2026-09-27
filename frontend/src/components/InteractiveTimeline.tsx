@@ -82,6 +82,9 @@ export const InteractiveTimeline: React.FC = () => {
               <img
                 src={activeEvent.image_url}
                 alt={activeEvent.title}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1000&q=80';
+                }}
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-3 left-3 bg-patriot-saffron text-charcoal-950 font-bold font-serif text-xs px-3 py-1 rounded shadow">

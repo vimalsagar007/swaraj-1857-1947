@@ -66,8 +66,11 @@ export const PersonModal: React.FC<PersonModalProps> = ({ person, onClose, onAsk
               <div className="space-y-2">
                 <div className="relative overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-800">
                   <img
-                    src={person.image_url || 'https://upload.wikimedia.org/wikipedia/commons/5/54/Bhagat_Singh_1929.jpg'}
+                    src={person.image_url || 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80'}
                     alt={person.name}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80';
+                    }}
                     className="w-full h-72 object-cover"
                   />
                   {person.is_ai_generated && (

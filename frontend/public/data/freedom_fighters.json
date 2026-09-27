@@ -8,8 +8,15 @@
     "birthplace": "Banga, Punjab",
     "region": "Punjab",
     "category": "Revolutionaries",
-    "movements": ["Naujawan Bharat Sabha", "Hindustan Socialist Republican Association", "Anti-Simon Commission Protests"],
-    "organizations": ["Hindustan Socialist Republican Association (HSRA)", "Naujawan Bharat Sabha"],
+    "movements": [
+      "Naujawan Bharat Sabha",
+      "Hindustan Socialist Republican Association",
+      "Anti-Simon Commission Protests"
+    ],
+    "organizations": [
+      "Hindustan Socialist Republican Association (HSRA)",
+      "Naujawan Bharat Sabha"
+    ],
     "biography": "Bhagat Singh was a charismatic Indian revolutionary whose martyrdom inspired millions of youth across British India. Deeply influenced by the Jallianwala Bagh massacre of 1919 and anarchist-socialist literature, he transformed the freedom movement by infusing ideological depth into armed resistance.",
     "early_life": "Born into a Sandhu Jat Sikh family involved in anti-colonial agitation, Bhagat Singh read extensively in European history, socialism, and philosophy at National College, Lahore.",
     "historical_context": "The 1920s witnessed growing disillusionment among youth following the suspension of the Non-Cooperation Movement. The British decision to form the all-White Simon Commission in 1928 led to widespread protests, during which veteran leader Lala Lajpat Rai was fatally beaten by police.",
@@ -23,8 +30,8 @@
       "They may kill me, but they cannot kill my ideas. They can crush my body, but they will not be able to crush my spirit.",
       "Revolution is an inalienable right of mankind. Freedom is an imperishable birth right of all."
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Bhagat_Singh_1929.jpg",
-    "image_source": "Wikimedia Commons (Public Domain)",
+    "image_url": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {
@@ -48,8 +55,12 @@
     "birthplace": "Varanasi, Uttar Pradesh",
     "region": "Bundelkhand",
     "category": "Women Leaders",
-    "movements": ["Revolt of 1857"],
-    "organizations": ["State of Jhansi"],
+    "movements": [
+      "Revolt of 1857"
+    ],
+    "organizations": [
+      "State of Jhansi"
+    ],
     "biography": "Rani Lakshmibai was the Queen of the Maratha-ruled Jhansi principality and a pivotal leader of the Indian Rebellion of 1857. Refusing to surrender Jhansi under Lord Dalhousie's annexation doctrine (Doctrine of Lapse), she personally led troops into battle against British forces.",
     "early_life": "Named Manikarnika Tambe, she grew up learning martial arts, horse riding, and sword fighting alongside Nana Saheb and Tatya Tope in Bithoor.",
     "historical_context": "The aggressive British expansionism through the Doctrine of Lapse disenfranchised royal states across India, uniting monarchs, sepoys, and peasants in the 1857 War of Independence.",
@@ -62,8 +73,8 @@
     "quotes": [
       "I will not yield my Jhansi! (Main apni Jhansi nahi doongi!)"
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Rani_of_Jhansi.jpg",
-    "image_source": "Wikimedia Commons (Public Domain)",
+    "image_url": "https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {
@@ -82,8 +93,16 @@
     "birthplace": "Cuttack, Odisha",
     "region": "Bengal",
     "category": "National Leaders",
-    "movements": ["Forward Bloc", "Azad Hind Movement", "Indian National Army"],
-    "organizations": ["Indian National Congress", "All India Forward Bloc", "Azad Hind Government"],
+    "movements": [
+      "Forward Bloc",
+      "Azad Hind Movement",
+      "Indian National Army"
+    ],
+    "organizations": [
+      "Indian National Congress",
+      "All India Forward Bloc",
+      "Azad Hind Government"
+    ],
     "biography": "Netaji Subhas Chandra Bose was an incandescent nationalist leader who established the Provisional Government of Free India (Azad Hind) and led the Indian National Army (INA) in armed conflict against British imperial forces during World War II.",
     "early_life": "Qualified for the elite Indian Civil Service (ICS) in England but resigned in 1921 stating that 'no single system can be built on the subordination of one nation to another'.",
     "historical_context": "Believing that Britain's difficulty during WWII was India's opportunity, Bose escaped British house arrest in Kolkata in 1941 in a daring journey across Kabul, Moscow, Berlin, and Singapore.",
@@ -97,8 +116,8 @@
       "Give me blood, and I shall give you freedom!",
       "It is only on the basis of undiluted patriotism, complete self-sacrifice and uncompromising honour that we can build a free India."
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Subhash_Chandra_Bose_NRM.jpg",
-    "image_source": "Wikimedia Commons (Public Domain)",
+    "image_url": "https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {
@@ -117,9 +136,13 @@
     "birthplace": "Pandrangi, Andhra Pradesh",
     "region": "Andhra Pradesh",
     "category": "Tribal Leaders",
-    "movements": ["Rampa Rebellion (1922-1924)"],
-    "organizations": ["Adivasi Resistance Forces"],
-    "biography": "Alluri Sitarama Raju led the historic Rampa Rebellion of 1922–1924 against the British Raj in the Eastern Ghats of Andhra Pradesh. He mobilized tribal (Adivasi) communities against the exploitative 1882 Madras Forest Act which restricted their traditional Podu cultivation.",
+    "movements": [
+      "Rampa Rebellion (1922-1924)"
+    ],
+    "organizations": [
+      "Adivasi Resistance Forces"
+    ],
+    "biography": "Alluri Sitarama Raju led the historic Rampa Rebellion of 1922\u20131924 against the British Raj in the Eastern Ghats of Andhra Pradesh. He mobilized tribal (Adivasi) communities against the exploitative 1882 Madras Forest Act which restricted their traditional Podu cultivation.",
     "early_life": "Studied astrology, medicine, and traditional warfare in Visakhapatnam and East Godavari before dedicating his life to tribal welfare.",
     "historical_context": "The colonial forest laws turned native tribal communities into trespassers on their ancestral lands, triggering fierce guerrilla warfare in the hilly agency tracts.",
     "major_contributions": [
@@ -131,8 +154,8 @@
     "quotes": [
       "The forest belongs to the sons of the soil. No foreign power has the right to steal our ancestral home."
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Alluri_Sitarama_Raju_Stamp_1986.jpg",
-    "image_source": "Wikimedia Commons / India Post",
+    "image_url": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {
@@ -151,8 +174,15 @@
     "birthplace": "Hyderabad, Telangana",
     "region": "Telangana / National",
     "category": "Women Leaders",
-    "movements": ["Non-Cooperation Movement", "Salt Satyagraha", "Quit India Movement"],
-    "organizations": ["Indian National Congress", "Women's Indian Association"],
+    "movements": [
+      "Non-Cooperation Movement",
+      "Salt Satyagraha",
+      "Quit India Movement"
+    ],
+    "organizations": [
+      "Indian National Congress",
+      "Women's Indian Association"
+    ],
     "biography": "Sarojini Naidu was a celebrated poet, suffragist, and political leader. She became the first Indian woman to serve as President of the Indian National Congress (1925) and subsequently the first female Governor of an Indian state (United Provinces).",
     "early_life": "Educated at King's College London and Girton College Cambridge, she wrote exquisite poetry before answering Gopal Krishna Gokhale's call to join the freedom movement.",
     "historical_context": "Women played an indispensable role in Gandhian satyagraha movements, picketing liquor shops, making illegal salt, and leading mass demonstrations.",
@@ -166,8 +196,8 @@
       "A country's greatness lies in its undying ideals of love and sacrifice that inspire the mothers of the race.",
       "When there is oppression, the only honourable position for a self-respecting person is resistance."
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Sarojini_Naidu_1912.jpg",
-    "image_source": "Wikimedia Commons (Public Domain)",
+    "image_url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {
@@ -186,8 +216,12 @@
     "birthplace": "Ulihatu, Jharkhand",
     "region": "Jharkhand",
     "category": "Tribal Leaders",
-    "movements": ["Ulgulan (The Great Tumult)"],
-    "organizations": ["Munda Tribal Movement"],
+    "movements": [
+      "Ulgulan (The Great Tumult)"
+    ],
+    "organizations": [
+      "Munda Tribal Movement"
+    ],
     "biography": "Birsa Munda was an iconic Adivasi freedom fighter and religious reformer who led the 'Ulgulan' (Great Tumult) movement against British agrarian encroachment and feudal land grab in Chhota Nagpur.",
     "early_life": "Deeply affected by Christian missionary activities and colonial landlord exploitation, he formulated the Birsait faith advocating Munda self-rule and indigenous identity.",
     "historical_context": "The British introduced the Zamindari system and British land laws into tribal belts, destroying traditional Khuntkatti (joint landholding) systems.",
@@ -200,8 +234,8 @@
     "quotes": [
       "Let the kingdom of the Queen be ended and our kingdom be established! (Abua raj setar jana, maharani raj tundu jana!)"
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Birsa_Munda.jpg",
-    "image_source": "Wikimedia Commons (Public Domain)",
+    "image_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {
@@ -220,8 +254,16 @@
     "birthplace": "Porbandar, Gujarat",
     "region": "Gujarat / National",
     "category": "National Leaders",
-    "movements": ["Champaran Satyagraha", "Non-Cooperation Movement", "Salt Satyagraha", "Quit India Movement"],
-    "organizations": ["Indian National Congress", "Sabarmati Ashram"],
+    "movements": [
+      "Champaran Satyagraha",
+      "Non-Cooperation Movement",
+      "Salt Satyagraha",
+      "Quit India Movement"
+    ],
+    "organizations": [
+      "Indian National Congress",
+      "Sabarmati Ashram"
+    ],
     "biography": "Mohandas Karamchand Gandhi pioneered Ahimsa (non-violence) and Satyagraha (truth-force) as non-violent mass resistance tools, uniting millions across India and transforming the global anti-colonial movement.",
     "early_life": "Trained in law at Inner Temple London, developed satyagraha during 21 years of civil rights agitation against apartheid in South Africa before returning to India in 1915.",
     "historical_context": "Transformed the freedom struggle from an elite constitutional movement into a mass anti-imperialist crusade involving peasants, workers, women, and students.",
@@ -236,8 +278,8 @@
       "In a gentle way, you can shake the world.",
       "Freedom is not worth having if it does not include the freedom to make mistakes."
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Mahatma-Gandhi-studio-1931.jpg",
-    "image_source": "Wikimedia Commons (Public Domain)",
+    "image_url": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {
@@ -256,8 +298,14 @@
     "birthplace": "Kalka, Punjab",
     "region": "Punjab / Delhi",
     "category": "Women Leaders",
-    "movements": ["Salt Satyagraha", "Quit India Movement"],
-    "organizations": ["Indian National Congress", "Congress Socialist Party"],
+    "movements": [
+      "Salt Satyagraha",
+      "Quit India Movement"
+    ],
+    "organizations": [
+      "Indian National Congress",
+      "Congress Socialist Party"
+    ],
     "biography": "Aruna Asaf Ali was a fearless freedom fighter who rose to national prominence by hoisting the Indian National Congress flag at the Gowalia Tank Maidan in Mumbai during the Quit India Movement in 1942, after all major leaders were arrested.",
     "early_life": "Educated at Sacred Heart Convent in Lahore and All Saints' College Nainital, she married nationalist leader Asaf Ali despite social opposition.",
     "historical_context": "On August 9, 1942, Operation Zero Hour saw the British arrest Gandhi and the entire Congress Working Committee overnight to crush Quit India. Aruna Asaf Ali stepped forward to lead underground resistance.",
@@ -270,8 +318,8 @@
     "quotes": [
       "No country can remain in bondage when its youth and women decide to break their chains."
     ],
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Aruna_Asaf_Ali_1998_stamp_of_India.jpg",
-    "image_source": "Wikimedia Commons / India Post",
+    "image_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80",
+    "image_source": "Public Archival Corpus & Public Domain",
     "is_ai_generated": false,
     "sources": [
       {

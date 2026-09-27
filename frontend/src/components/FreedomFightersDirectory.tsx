@@ -102,6 +102,9 @@ export const FreedomFightersDirectory: React.FC<DirectoryProps> = ({ onAskAIAbou
                 <img
                   src={ff.image_url}
                   alt={ff.name}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80';
+                  }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-transparent opacity-80" />
