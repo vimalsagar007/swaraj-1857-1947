@@ -43,3 +43,42 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Indian Tricolor Design Tokens */
+.tricolor-border {
+  border-image: linear-gradient(90deg, #FF9933 0%, #FFFFFF 50%, #138808 100%) 1;
+}
+
+.tricolor-bg-bar {
+  background: linear-gradient(90deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+}
+
+.tricolor-glow {
+  box-shadow: 0 0 20px rgba(255, 153, 51, 0.25), 0 0 20px rgba(19, 136, 8, 0.25);
+}
+
+.tricolor-text {
+  background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Image Fit & High Visibility Utilities */
+.img-visible-fit {
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.img-visible-fit:hover {
+  transform: scale(1.03);
+}
+
+.img-container-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  background-color: #141419;
+}
+

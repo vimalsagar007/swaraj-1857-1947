@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Shield, Sparkles, Flag, Award } from 'lucide-react';
+import { TricolorFlag } from './TricolorFlag';
 
 export const TributeSection: React.FC = () => {
   return (
@@ -15,8 +16,8 @@ export const TributeSection: React.FC = () => {
         <div className="absolute -top-12 -right-12 w-48 h-48 bg-patriot-saffron/10 rounded-full blur-2xl" />
         <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-gold-500/10 rounded-full blur-2xl" />
 
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/40 bg-charcoal-900 text-gold-400 text-xs tracking-widest uppercase font-semibold">
-          <Award className="w-4 h-4 text-patriot-saffron" />
+        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-gold-500/40 bg-charcoal-900 text-gold-400 text-xs tracking-widest uppercase font-semibold">
+          <TricolorFlag size="sm" />
           <span>A Tribute to the Immortals</span>
         </div>
 

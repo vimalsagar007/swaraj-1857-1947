@@ -1,88 +1,79 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX, Music } from 'lucide-react';
+import { Volume2, VolumeX, Play, Pause, Music } from 'lucide-react';
+import { TricolorFlag } from './TricolorFlag';
 
 export const AudioController: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(() => {
     return localStorage.getItem('swaraj_music_enabled') === 'true';
   });
-  const [volume, setVolume] = useState<number>(0.3);
-  const audioCtxRef = useRef<AudioContext | null>(null);
-  const oscillatorRef = useRef<OscillatorNode | null>(null);
-  const gainNodeRef = useRef<GainNode | null>(null);
+  const [volume, setVolume] = useState<number>(0.5);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      const audio = new Audio();
+      // Primary local path with fallback to Internet Archive stream
+      audio.src = '/audio/vande_mataram.mp3';
+      audio.loop = true;
+      audio.volume = volume;
+
+      audio.onerror = () => {
+        console.warn('Local Vande Mataram audio failed, using streaming fallback');
+        audio.src = 'https://archive.org/download/ar-rahman-vande-mataram-1997/01.%20A.R.%20Rahman%20-%20Maa%20Tujhe%20Salaam.mp3';
+      };
+
+      audioRef.current = audio;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume]);
 
   useEffect(() => {
     localStorage.setItem('swaraj_music_enabled', isPlaying.toString());
 
-    if (isPlaying) {
-      try {
-        const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-        if (!audioCtxRef.current) {
-          audioCtxRef.current = new AudioCtx();
-        }
-
-        const ctx = audioCtxRef.current;
-        if (ctx.state === 'suspended') {
-          ctx.resume();
-        }
-
-        // Create warm tanpura drone sound using web audio synthesizer
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(146.83, ctx.currentTime); // D3 frequency - Indian classical drone pitch
-        gain.gain.setValueAtTime(volume * 0.15, ctx.currentTime);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc.start();
-        oscillatorRef.current = osc;
-        gainNodeRef.current = gain;
-      } catch (err) {
-        console.warn('Audio Context initialization deferred:', err);
-      }
-    } else {
-      if (oscillatorRef.current) {
-        oscillatorRef.current.stop();
-        oscillatorRef.current.disconnect();
-        oscillatorRef.current = null;
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.play().catch((err) => {
+          console.warn('Autoplay blocked by browser policy. Click play to listen.', err);
+          setIsPlaying(false);
+        });
+      } else {
+        audioRef.current.pause();
       }
     }
-
-    return () => {
-      if (oscillatorRef.current) {
-        oscillatorRef.current.stop();
-        oscillatorRef.current.disconnect();
-      }
-    };
   }, [isPlaying]);
-
-  useEffect(() => {
-    if (gainNodeRef.current && audioCtxRef.current) {
-      gainNodeRef.current.gain.setValueAtTime(volume * 0.15, audioCtxRef.current.currentTime);
-    }
-  }, [volume]);
 
   const toggleMusic = () => {
     setIsPlaying(!isPlaying);
   };
 
   return (
-    <div className="flex items-center gap-3 bg-charcoal-800/80 backdrop-blur border border-gold-500/30 rounded-full px-4 py-1.5 text-xs text-parchment-200 shadow-lg">
+    <div className="flex items-center gap-3 bg-charcoal-800/90 backdrop-blur-md border border-gold-500/40 rounded-full px-4 py-2 text-xs text-parchment-200 shadow-xl hover:border-gold-500 transition-all">
+      <TricolorFlag size="sm" />
+      
       <button
         onClick={toggleMusic}
         className="flex items-center gap-2 hover:text-gold-500 transition-colors focus:outline-none"
-        title="Toggle Ambient Instrumental Soundscape"
+        title="Toggle A.R. Rahman - Vande Mataram"
       >
-        <Music className="w-3.5 h-3.5 text-gold-500 animate-pulse" />
-        <span className="font-serif tracking-wider font-semibold">
-          MUSIC {isPlaying ? 'ON' : 'OFF'}
+        <Music className={`w-3.5 h-3.5 text-patriot-saffron ${isPlaying ? 'animate-spin' : ''}`} />
+        <span className="font-serif tracking-wider font-bold text-parchment-100 flex items-center gap-1.5">
+          VANDE MATARAM <span className="text-[10px] opacity-75 font-sans font-normal">(A.R. RAHMAN)</span>
         </span>
         {isPlaying ? (
-          <Volume2 className="w-4 h-4 text-patriot-saffron" />
+          <div className="flex items-center gap-1 text-patriot-saffron">
+            <Pause className="w-3.5 h-3.5 fill-current" />
+            <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+          </div>
         ) : (
-          <VolumeX className="w-4 h-4 text-gray-500" />
+          <div className="flex items-center gap-1 text-gray-400">
+            <Play className="w-3.5 h-3.5 fill-current" />
+            <VolumeX className="w-4 h-4" />
+          </div>
         )}
       </button>
 
@@ -94,7 +85,7 @@ export const AudioController: React.FC = () => {
           step="0.05"
           value={volume}
           onChange={(e) => setVolume(parseFloat(e.target.value))}
-          className="w-16 accent-gold-500 cursor-pointer h-1 rounded"
+          className="w-16 accent-gold-500 cursor-pointer h-1 rounded bg-charcoal-700"
           title="Adjust Volume"
         />
       )}

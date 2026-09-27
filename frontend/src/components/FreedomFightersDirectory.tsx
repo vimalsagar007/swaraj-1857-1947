@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Filter, Shield, Users, Sparkles, ChevronRight } from 'lucide-react';
 import { PersonData, PersonModal } from './PersonModal';
+import { TricolorFlag } from './TricolorFlag';
 
 interface DirectoryProps {
   onAskAIAboutPerson: (personName: string) => void;
@@ -98,17 +99,18 @@ export const FreedomFightersDirectory: React.FC<DirectoryProps> = ({ onAskAIAbou
             className="bg-charcoal-800/80 border border-gold-500/20 hover:border-gold-500/60 rounded-xl overflow-hidden glass-panel flex flex-col justify-between group transition-all"
           >
             <div>
-              <div className="relative h-56 overflow-hidden bg-charcoal-900">
+              <div className="relative h-64 overflow-hidden bg-charcoal-900 border-b border-gold-500/20">
                 <img
                   src={ff.image_url}
                   alt={ff.name}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80';
+                    (e.target as HTMLImageElement).src = 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg';
                   }}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full img-visible-fit group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-transparent opacity-80" />
-                <span className="absolute bottom-2 left-2 text-[10px] bg-charcoal-950/90 border border-gold-500/30 text-gold-400 font-serif px-2.5 py-0.5 rounded uppercase">
+                <TricolorFlag size="sm" className="absolute top-2.5 right-2.5 z-10 shadow-lg border border-gold-500/40" />
+                <span className="absolute bottom-2 left-2 text-[10px] bg-charcoal-950/90 border border-gold-500/40 text-gold-400 font-serif px-2.5 py-0.5 rounded uppercase font-semibold">
                   {ff.category}
                 </span>
               </div>

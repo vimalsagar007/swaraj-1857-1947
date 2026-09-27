@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, MapPin, Flag, ExternalLink, Sparkles, Quote, Shield } from 'lucide-react';
+import { TricolorFlag } from './TricolorFlag';
 
 export interface PersonData {
   id: string;
@@ -43,9 +44,9 @@ export const PersonModal: React.FC<PersonModalProps> = ({ person, onClose, onAsk
           className="relative w-full max-w-4xl bg-charcoal-900 border border-gold-500/40 rounded-2xl overflow-hidden glass-panel shadow-2xl my-8 max-h-[90vh] flex flex-col"
         >
           {/* Header Bar */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-800 bg-charcoal-950/80 sticky top-0 z-10">
+          <div className="flex items-center justify-between p-6 border-b border-gray-800 bg-charcoal-950/90 sticky top-0 z-10">
             <div className="flex items-center gap-3">
-              <Shield className="w-5 h-5 text-patriot-saffron" />
+              <TricolorFlag size="sm" />
               <span className="font-serif text-xs text-gold-500 tracking-widest uppercase font-semibold">
                 Archival Hero Profile
               </span>
@@ -64,15 +65,16 @@ export const PersonModal: React.FC<PersonModalProps> = ({ person, onClose, onAsk
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
               {/* Portrait */}
               <div className="space-y-2">
-                <div className="relative overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-800">
+                <div className="relative overflow-hidden rounded-xl border border-gold-500/40 bg-charcoal-800 shadow-xl">
                   <img
-                    src={person.image_url || 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80'}
+                    src={person.image_url || 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg'}
                     alt={person.name}
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80';
+                      (e.target as HTMLImageElement).src = 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg';
                     }}
-                    className="w-full h-72 object-cover"
+                    className="w-full h-80 img-visible-fit"
                   />
+                  <TricolorFlag size="sm" className="absolute top-2.5 right-2.5 z-10 shadow-lg border border-gold-500/40" />
                   {person.is_ai_generated && (
                     <div className="absolute top-2 left-2 bg-patriot-saffron text-charcoal-950 text-[10px] font-bold px-2 py-0.5 rounded uppercase">
                       AI Historical Visualization

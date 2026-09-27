@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Compass, Sparkles, Flame, Shield, ArrowRight } from 'lucide-react';
+import { TricolorFlag } from './TricolorFlag';
 
 interface HeroSequenceProps {
   onExplore: () => void;
@@ -112,14 +113,14 @@ export const HeroSequence: React.FC<HeroSequenceProps> = ({ onExplore, onAskAI }
               transition={{ duration: 1.4 }}
               className="space-y-8"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-500/40 bg-charcoal-800/80 text-gold-400 text-xs tracking-widest uppercase font-semibold">
-                <Shield className="w-3.5 h-3.5 text-patriot-saffron" />
-                <span>Agentic AI Historical Research Experience</span>
+              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-gold-500/40 bg-charcoal-800/80 text-gold-400 text-xs tracking-widest uppercase font-semibold shadow-xl">
+                <TricolorFlag size="sm" />
+                <span>Agentic AI Freedom Struggle Platform</span>
               </div>
 
               <div>
-                <h1 className="font-serif text-6xl md:text-8xl font-black tracking-tight text-parchment-50 mb-2">
-                  SWARAJ
+                <h1 className="font-serif text-6xl md:text-8xl font-black tracking-tight text-parchment-50 mb-2 flex items-center justify-center gap-4">
+                  SWARAJ <TricolorFlag size="lg" className="inline-block shadow-2xl" />
                 </h1>
                 <p className="font-serif text-2xl md:text-4xl text-gold-500 tracking-widest font-semibold">
                   1857 — 1947

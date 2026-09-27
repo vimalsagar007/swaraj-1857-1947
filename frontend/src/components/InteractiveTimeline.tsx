@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, MapPin, Users, ExternalLink, Calendar, ChevronRight } from 'lucide-react';
+import { TricolorFlag } from './TricolorFlag';
 
 interface TimelineEvent {
   id: string;
@@ -78,15 +79,16 @@ export const InteractiveTimeline: React.FC = () => {
         >
           {/* Event Image */}
           <div className="space-y-2">
-            <div className="relative overflow-hidden rounded-xl border border-gold-500/30 bg-charcoal-900 h-80">
+            <div className="relative overflow-hidden rounded-xl border border-gold-500/40 bg-charcoal-900 h-80 shadow-xl">
               <img
                 src={activeEvent.image_url}
                 alt={activeEvent.title}
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1000&q=80';
+                  (e.target as HTMLImageElement).src = 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Indian_Rebellion_of_1857.jpg';
                 }}
-                className="w-full h-full object-cover"
+                className="w-full h-full img-visible-fit"
               />
+              <TricolorFlag size="sm" className="absolute top-3 right-3 z-10 shadow-lg border border-gold-500/40" />
               <div className="absolute top-3 left-3 bg-patriot-saffron text-charcoal-950 font-bold font-serif text-xs px-3 py-1 rounded shadow">
                 {activeEvent.year}
               </div>
