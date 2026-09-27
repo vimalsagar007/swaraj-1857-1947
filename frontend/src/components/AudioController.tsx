@@ -12,15 +12,10 @@ export const AudioController: React.FC = () => {
   useEffect(() => {
     if (!audioRef.current) {
       const audio = new Audio();
-      // Primary local path with fallback to Internet Archive stream
-      audio.src = '/audio/vande_mataram.mp3';
+      // High-quality stream of A.R. Rahman - Maa Tujhe Salaam (Vande Mataram)
+      audio.src = 'https://archive.org/download/ar-rahman-vande-mataram-1997/01.%20A.R.%20Rahman%20-%20Maa%20Tujhe%20Salaam.mp3';
       audio.loop = true;
       audio.volume = volume;
-
-      audio.onerror = () => {
-        console.warn('Local Vande Mataram audio failed, using streaming fallback');
-        audio.src = 'https://archive.org/download/ar-rahman-vande-mataram-1997/01.%20A.R.%20Rahman%20-%20Maa%20Tujhe%20Salaam.mp3';
-      };
 
       audioRef.current = audio;
     }
