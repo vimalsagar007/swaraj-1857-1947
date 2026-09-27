@@ -116,9 +116,37 @@ class OpenLibraryProvider(PublicAPIProvider):
             logger.warning(f"Open Library API call failed: {e}")
             return []
 
+class WikipediaProvider(PublicAPIProvider):
+    """Wikipedia REST API Provider for primary trusted encyclopedia summaries and images."""
+    def search(self, query: str) -> List[Dict[str, Any]]:
+        url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(query)}"
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'SwarajHistoryAgent/1.0 (https://github.com/vimalsagar007/swaraj-1857-1947)'})
+            with urllib.request.urlopen(req, timeout=5) as response:
+                data = json.loads(response.read().decode('utf-8'))
+                title = data.get('title', query)
+                extract = data.get('extract', 'Wikipedia entry')
+                content_urls = data.get('content_urls', {}).get('desktop', {})
+                page_url = content_urls.get('page', f"https://en.wikipedia.org/wiki/{urllib.parse.quote(title)}")
+                img_url = data.get('originalimage', {}).get('source') or data.get('thumbnail', {}).get('source', '')
+                
+                return [{
+                    "title": title,
+                    "description": extract,
+                    "url": page_url,
+                    "source": "Wikipedia (Primary Trusted Source)",
+                    "published_date": "Encyclopedia Record",
+                    "image_url": img_url if img_url and any(img_url.lower().split('?')[0].endswith(ext) for ext in ['.jpg', '.jpeg', '.png', '.webp', '.svg']) else "",
+                    "license": "CC BY-SA 4.0 / Public Domain"
+                }]
+        except Exception as e:
+            logger.warning(f"Wikipedia REST API call failed: {e}")
+            return []
+
 class AggregatedPublicSources:
     def __init__(self):
         self.providers = [
+            WikipediaProvider(),
             WikidataProvider(),
             WikimediaProvider(),
             InternetArchiveProvider(),

@@ -51,29 +51,36 @@ class ResearchAgent:
 class ImageResearchAgent:
     """Specialist Agent for Archival Photography and AI Historical Visualizations."""
     def run(self, query: str, mcp: SwarajMCPServer) -> Dict[str, Any]:
+        formatted_images = []
+        
+        # Primary: Wikipedia Page Image
+        wiki_res = mcp.call_tool("search_public_sources", {"query": query})
+        for item in wiki_res.get("results", []):
+            if item.get("source") == "Wikipedia (Primary Trusted Source)" and item.get("image_url"):
+                formatted_images.append({
+                    "url": item["image_url"],
+                    "title": item.get("title", query),
+                    "source": "Wikipedia (Primary Trusted Source)",
+                    "license": "CC BY-SA / Public Domain",
+                    "is_ai_generated": False
+                })
+
+        # Secondary: Wikimedia Commons search
         archival_res = mcp.call_tool("search_wikimedia", {"query": query})
         images = archival_res.get("results", [])
         
-        formatted_images = []
         for img in images:
             img_url = img.get("image_url", "")
             if img_url and any(img_url.lower().split('?')[0].endswith(ext) for ext in ['.jpg', '.jpeg', '.png', '.webp', '.svg', '.gif']):
-                formatted_images.append({
-                    "url": img_url,
-                    "title": img.get("title", query),
-                    "source": img.get("source", "Wikimedia Commons"),
-                    "license": img.get("license", "Public Domain"),
-                    "is_ai_generated": False
-                })
-        
-        # Add AI historical visualization fallback if needed
-        formatted_images.append({
-            "url": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80",
-            "title": f"Artistic Historical Visualization of {query}",
-            "source": "Swaraj AI Engine",
-            "license": "AI-generated historical visualization",
-            "is_ai_generated": True
-        })
+                # Avoid duplicate URLs
+                if not any(i["url"] == img_url for i in formatted_images):
+                    formatted_images.append({
+                        "url": img_url,
+                        "title": img.get("title", query),
+                        "source": img.get("source", "Wikimedia Commons"),
+                        "license": img.get("license", "Public Domain"),
+                        "is_ai_generated": False
+                    })
 
         return {
             "agent": "ImageResearchAgent",
