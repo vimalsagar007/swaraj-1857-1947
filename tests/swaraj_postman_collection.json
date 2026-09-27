@@ -1,0 +1,197 @@
+{
+  "info": {
+    "_postman_id": "930fa170-c104-495c-86e7-swaraj18571947",
+    "name": "Swaraj 1857-1947 Historical Platform API Test Suite",
+    "description": "Comprehensive Postman API test collection for Swaraj 1857-1947 Agentic AI Historical Platform deployed on Cloud Run and Google Enterprise Agent Runtime.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01. Health Check",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Service is healthy', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.status).to.eql('healthy');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/health",
+          "host": ["{{base_url}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "02. Chat Query - Shaheed Bhagat Singh",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Response includes grounded answer', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.answer).to.include('Bhagat Singh');",
+              "});",
+              "pm.test('Fact check status is SUPPORTED', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.fact_check_status).to.be.oneOf(['SUPPORTED', 'PARTIALLY_SUPPORTED']);",
+              "});",
+              "pm.test('Citations are provided', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.citations.length).to.be.above(0);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"Tell me about Shaheed Bhagat Singh and his role in the freedom struggle\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chat",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chat"]
+        }
+      }
+    },
+    {
+      "name": "03. Chat Query - Rani Lakshmibai 1857 Revolt",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Contains Rani Lakshmibai context', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.answer.toLowerCase()).to.include('lakshmibai');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"What was the role of Rani Lakshmibai of Jhansi in the 1857 War of Independence?\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chat",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chat"]
+        }
+      }
+    },
+    {
+      "name": "04. Chat Query - Quit India Movement 1942",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Contains Quit India 1942 details', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.answer).to.include('1942');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"Explain the historical impact of the Quit India Movement of 1942\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/chat",
+          "host": ["{{base_url}}"],
+          "path": ["api", "chat"]
+        }
+      }
+    },
+    {
+      "name": "05. Agent Card Discovery",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Valid Agent Card schema', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.name).to.include('Swaraj');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/.well-known/agent-card.json",
+          "host": ["{{base_url}}"],
+          "path": [".well-known", "agent-card.json"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://swaraj-historical-agent-61256100941.us-central1.run.app",
+      "type": "string"
+    }
+  ]
+}

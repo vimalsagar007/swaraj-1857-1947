@@ -175,44 +175,33 @@ curl -s -X POST https://swaraj-historical-agent-61256100941.us-central1.run.app/
 
 ---
 
-### 4.2 Testing Live in Google Enterprise Agent Runtime Playground
+### 4.4 Postman API Collection & Test Execution Report
 
-1. **Open GCP Console**:
-   Navigate to [Vertex AI Agent Engines Console](https://console.cloud.google.com/vertex-ai/agents/agent-engines/locations/us-central1/agent-engines/2726291307872911360?project=qwiklabs-gcp-02-63b2f55175ee).
-2. **Select Reasoning Engine Resource**:
-   - Resource ID: `projects/61256100941/locations/us-central1/reasoningEngines/2726291307872911360`
-3. **Interactive Playground Execution**:
-   - Enter prompts such as: *"Who were the prominent women leaders in the Indian freedom struggle?"* or *"Explain the significance of the 1930 Salt March."*
-   - Inspect step-by-step agent tool invocations, RAG vector store queries, and citation provenance in real time.
+A dedicated Postman collection `tests/swaraj_postman_collection.json` (Postman v2.1.0 schema) is committed to the repository for automated REST API testing.
 
----
-
-### 4.3 Running Automated Integration Test Suite
-
-Execute the automated test suite (`tests/test_swaraj_system.py`) to verify RAG retrieval, specialist agent orchestration, Wikipedia image resolution, and fact-checking logic across 10 core historical scenarios:
+To execute the Postman API collection against the live backend and generate an updated test report:
 
 ```bash
-python3 tests/test_swaraj_system.py
+python3 tests/run_postman_tests.py
 ```
 
-#### Test Suite Coverage Matrix
+#### Live Postman Execution Results (100% Pass)
 
-| # | Query | Primary Agent | Verification Criteria |
-|---|-------|---------------|----------------------|
-| 1 | *"Tell me about Bhagat Singh."* | `BiographyAgent` + RAG | Validates biography context, grounded citations `[1]`, and `SUPPORTED` evidence status. |
-| 2 | *"What was the contribution of Rani Lakshmibai?"* | `BiographyAgent` + `TimelineAgent` | Verifies 1857 Revolt details, Jhansi resistance history, and primary source URLs. |
-| 3 | *"Who were the women freedom fighters?"* | `OrchestratorAgent` | Verifies multi-person filtering (Sarojini Naidu, Aruna Asaf Ali, Rani Lakshmibai). |
-| 4 | *"Show freedom fighters connected with Andhra Pradesh."* | `ResearchAgent` + RAG | Validates regional filtering for Alluri Sitarama Raju and Rampa Rebellion. |
-| 5 | *"What happened during the Quit India Movement?"* | `TimelineAgent` | Confirms 1942 milestone details, Bombay session, and major leaders. |
-| 6 | *"Find historical images of Subhas Chandra Bose."* | `ImageResearchAgent` | Verifies archival Wikipedia image retrieval and `AI-generated historical visualization` badge tags. |
-| 7 | *"Give me the timeline from 1857 to 1947."* | `TimelineAgent` | Validates complete chronological event sequence from 1857 Revolt to 1947 Independence. |
-| 8 | *"Compare Non-Cooperation and Civil Disobedience."* | `OrchestratorAgent` | Verifies comparative analysis between 1920 (Non-Cooperation) and 1930 (Salt Satyagraha). |
-| 9 | *"Who participated in the Kakori action?"* | `BiographyAgent` + RAG | Confirms HRA revolutionaries (Ram Prasad Bismil, Ashfaqulla Khan, Chandrashekhar Azad). |
-| 10 | *"Show me reliable sources about Alluri Sitarama Raju."* | `CitationAgent` + MCP | Verifies source provenance metadata, publisher attribution, and direct URLs. |
+- **Collection File**: [tests/swaraj_postman_collection.json](file:///config/Desktop/Session1/swaraj-1857-1947/tests/swaraj_postman_collection.json)
+- **Detailed Report**: [tests/POSTMAN_TEST_RESULTS.md](file:///config/Desktop/Session1/swaraj-1857-1947/tests/POSTMAN_TEST_RESULTS.md)
+- **Raw JSON Results**: [tests/postman_results.json](file:///config/Desktop/Session1/swaraj-1857-1947/tests/postman_results.json)
+
+| Endpoint Name | HTTP Method | Target Path | Latency | Result | Assertions Passed |
+| :--- | :---: | :--- | :---: | :---: | :---: |
+| **01. Health Check** | `GET` | `/api/health` | 2130 ms | ✅ **PASS** | 2 / 2 |
+| **02. Chat Query - Shaheed Bhagat Singh** | `POST` | `/api/chat` | 4445 ms | ✅ **PASS** | 4 / 4 |
+| **03. Chat Query - Rani Lakshmibai 1857** | `POST` | `/api/chat` | 6282 ms | ✅ **PASS** | 4 / 4 |
+| **04. Chat Query - Quit India 1942** | `POST` | `/api/chat` | 5404 ms | ✅ **PASS** | 4 / 4 |
+| **05. Agent Card Discovery** | `GET` | `/.well-known/agent-card.json` | 131 ms | ✅ **PASS** | 2 / 2 |
 
 ---
 
-### 4.4 Testing the Web Application Locally
+### 4.5 Testing the Web Application Locally
 
 1. **Navigate to `frontend/` directory**:
    ```bash
