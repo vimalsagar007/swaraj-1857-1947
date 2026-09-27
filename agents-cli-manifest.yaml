@@ -1,0 +1,6 @@
+project: swaraj-1857-1947
+framework: google-adk
+deployment_target: agent_runtime
+region: us-central1
+service_name: swaraj-historical-research-agent
+agent_directory: .
